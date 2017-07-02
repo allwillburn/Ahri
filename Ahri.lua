@@ -1,5 +1,5 @@
 
-local ver = "0.04"
+local ver = "0.05"
 
 if GetObjectName(GetMyHero()) ~= "Ahri" then return end
 
@@ -196,7 +196,7 @@ OnTick(function (myHero)
 
                 
 		         if IsReady(_W) and ValidTarget(enemy, 800) and AhriMenu.KillSteal.W:Value() and GetHP(enemy) < getdmg("W",enemy) then                   
-                                  CastSkillShot(_W, WPred.castPos)
+                                  CastSpell(_W)
                     
              end
 			
