@@ -1,5 +1,5 @@
 
-local ver = "0.05"
+local ver = "0.06"
 
 if GetObjectName(GetMyHero()) ~= "Ahri" then return end
 
@@ -121,7 +121,14 @@ OnTick(function (myHero)
 	--COMBO
 	  if Mix:Mode() == "Combo" then
         
-
+            if AhriMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 975) then
+                 local EPred = GetPrediction(target,AhriE)
+                 if EPred.hitChance > (AhriMenu.Combo.Epred:Value() * 0.1) and not EPred:mCollision(1) then
+                           CastSkillShot(_E, EPred.castPos)
+                 end
+            end	
+			
+			
             if AhriMenu.Combo.Randuins:Value() and Randuins > 0 and Ready(Randuins) and ValidTarget(target, 500) then
 			           CastSpell(Randuins)
             end
