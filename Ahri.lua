@@ -1,5 +1,5 @@
 
-local ver = "0.02"
+local ver = "0.03"
 
 if GetObjectName(GetMyHero()) ~= "Ahri" then return end
 
@@ -253,7 +253,7 @@ OnTick(function (myHero)
                   CastTargetSpell(minion, _E)
               end
 		
-	      if AhriMenu.AutoFarm.EP:Value() and Ready(_E) and ValidTarget(minion, 450) and minion.isPoisoned and GetCurrentHP(minion) < CalcDamage(myHero,minion,EDmg,E) then
+	      if AhriMenu.AutoFarm.E:Value() and Ready(_E) and ValidTarget(minion, 450) and minion.isPoisoned and GetCurrentHP(minion) < CalcDamage(myHero,minion,EDmg,E) then
                   CastTargetSpell(minion, _E)
               end		
 			
