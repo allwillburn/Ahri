@@ -1,5 +1,5 @@
 
-local ver = "0.03"
+local ver = "0.04"
 
 if GetObjectName(GetMyHero()) ~= "Ahri" then return end
 
@@ -136,7 +136,7 @@ OnTick(function (myHero)
             	
 	    	
 	    if AhriMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 975) then
-                 local QPred = GetPrediction(target,AhriE)
+                 local EPred = GetPrediction(target,AhriE)
                  if EPred.hitChance > (AhriMenu.Combo.Epred:Value() * 0.1) and not EPred:mCollision(1) then
                            CastSkillShot(_E, EPred.castPos)
                  end
@@ -202,7 +202,7 @@ OnTick(function (myHero)
 			
 			
 		         if AhriMenu.KillSteal.E:Value() and Ready(_E) and ValidTarget(target, 975) then
-                 local QPred = GetPrediction(target,AhriE)
+                 local EPred = GetPrediction(target,AhriE)
                  if EPred.hitChance > (AhriMenu.Combo.Epred:Value() * 0.1) and not EPred:mCollision(1) then
                            CastSkillShot(_E, EPred.castPos)
                  end
@@ -280,7 +280,7 @@ OnTick(function (myHero)
         end
     
         if AhriMenu.AutoMode.E:Value() and Ready(_E) and ValidTarget(target, 975) then
-                 local QPred = GetPrediction(target,AhriE)
+                 local EPred = GetPrediction(target,AhriE)
                  if EPred.hitChance > (AhriMenu.Combo.Epred:Value() * 0.1) and not EPred:mCollision(1) then
                            CastSkillShot(_E, EPred.castPos)
                  end
