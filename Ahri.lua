@@ -1,5 +1,5 @@
 
-local ver = "0.01"
+local ver = "0.02"
 
 if GetObjectName(GetMyHero()) ~= "Ahri" then return end
 
@@ -148,12 +148,12 @@ OnTick(function (myHero)
           
             if AhriMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 700) then                                     
                                     CastSpell(_W)
-                   end
+                   
             end
 	    	    
             if AhriMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 450) and (EnemiesAround(myHeroPos(), 450) >= AhriMenu.Combo.RX:Value()) then            
                              CastSkillShot(_R, target.pos)
-                   end
+                   
         
             end
 			
@@ -213,7 +213,7 @@ OnTick(function (myHero)
                                  CastSkillShot(_R, target.pos)
                        end
             
-                end
+                
             
               end
 
@@ -287,7 +287,7 @@ OnTick(function (myHero)
             end	
         if AhriMenu.AutoMode.R:Value() and Ready(_R) and ValidTarget(target, 450) and (EnemiesAround(myHeroPos(), 825) >= AhriMenu.AutoMode.RX:Value()) then               
                          CastSkillShot(_R, target.pos)
-               end
+               
     
         end
                 
