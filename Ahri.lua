@@ -1,5 +1,5 @@
 
-local ver = "0.06"
+local ver = "0.07"
 
 if GetObjectName(GetMyHero()) ~= "Ahri" then return end
 
@@ -44,6 +44,7 @@ AhriMenu.AutoMode:Boolean("Level", "Auto level spells", false)
 AhriMenu.AutoMode:Boolean("Ghost", "Auto Ghost", false)
 AhriMenu.AutoMode:Boolean("Q", "Auto Q", false)
 AhriMenu.AutoMode:Slider("Qpred", "Q Hit Chance", 3,0,10,1)
+AhriMenu.AutoMode:Slider("QM", "Q Mana", 300,0,1000,100)
 AhriMenu.AutoMode:Boolean("W", "Auto W", false)
 AhriMenu.AutoMode:Boolean("E", "Auto E", false)
 AhriMenu.AutoMode:Slider("Epred", "E Hit Chance", 3,0,10,1)
@@ -208,7 +209,8 @@ OnTick(function (myHero)
              end
 			
 			
-		         if AhriMenu.KillSteal.E:Value() and Ready(_E) and ValidTarget(target, 975) then
+		         
+		         if AhriMenu.KillSteal.E:Value() and Ready(_E) and ValidTarget(target, 975) and GetHP(enemy) < getdmg("E",enemy) then
                  local EPred = GetPrediction(target,AhriE)
                  if EPred.hitChance > (AhriMenu.Combo.Epred:Value() * 0.1) and not EPred:mCollision(1) then
                            CastSkillShot(_E, EPred.castPos)
@@ -273,7 +275,7 @@ OnTick(function (myHero)
       
       --AutoMode
       
-        if AhriMenu.AutoMode.Q:Value() and ValidTarget(target, 880) then        
+        if AhriMenu.AutoMode.Q:Value() and ValidTarget(target, 880) and GetCurrentMana(myHero) >= AhriMenu.AutoMode.QM:Value() then        
                local QPred = GetPrediction(target,AhriQ)
                if QPred.hitChance > (AhriMenu.AutoMode.Qpred:Value() * 0.1) then
                          CastSkillShot(_Q, QPred.castPos)
