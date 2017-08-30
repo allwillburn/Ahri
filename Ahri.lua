@@ -1,14 +1,5 @@
 
-local ver = "0.08"
-
-
-if FileExist(COMMON_PATH.."MixLib.lua") then
- require('MixLib')
-else
- PrintChat("MixLib not found. Please wait for download.")
- DownloadFileAsync("https://raw.githubusercontent.com/VTNEETS/NEET-Scripts/master/MixLib.lua", COMMON_PATH.."MixLib.lua", function() PrintChat("Downloaded MixLib. Please 2x F6!") return end)
-end
-
+local ver = "0.07"
 
 if GetObjectName(GetMyHero()) ~= "Ahri" then return end
 
